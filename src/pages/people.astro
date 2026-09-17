@@ -1,0 +1,30 @@
+---
+import Base from "../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+const people = (await getCollection("people")).sort((a, b) => a.data.order - b.data.order);
+const rendered = await Promise.all(people.map(async p => ({ ...p, Content: (await render(p)).Content })));
+---
+<Base title="People">
+<section>
+  <div class="wrap">
+    <p class="eyebrow">People</p>
+    <h1>The group</h1>
+    {rendered.map(p => (
+      <div class="leader-grid person">
+        {p.data.photo && <img class="framed" src={p.data.photo} alt={`Portrait of ${p.data.name}`} width="700" height="466">}
+        <div>
+          <h2>{p.data.name}</h2>
+          <p class="muted">{p.data.role}</p>
+          <div class="prose"><p.Content /></div>
+          <div class="links">
+            {p.data.links.map(l => <a href={l.url}>{l.label}</a>)}
+            {p.data.email && <a href={`mailto:${p.data.email}`}>Email</a>}
+          </div>
+        </div>
+      </div>
+    ))}
+    <p class="muted" style="margin-top:32px">Group members are added as they join. <a href="/join">Open positions</a>.</p>
+  </div>
+</section>
+</Base>
+<style>.person{margin-top:28px}</style>

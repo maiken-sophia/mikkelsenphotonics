@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+import pubs from "../data/publications.json";
+const byYear = new Map<number, typeof pubs>();
+for (const p of [...pubs].sort((a, b) => b.year - a.year)) {
+  if (!byYear.has(p.year)) byYear.set(p.year, []);
+  byYear.get(p.year)!.push(p);
+}
+---
+<Base title="Publications">
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Publications</p>
+    <h1>Publications</h1>
+    <p class="muted prose">Publications of the group, including reviews and book chapters. The complete list is on <a href="https://scholar.google.com/citations?user=znOGvKIAAAAJ">Google Scholar</a> and <a href="https://orcid.org/0000-0002-0487-7585">ORCID</a>.</p>
+    {[...byYear.entries()].map(([year, list]) => (
+      <>
+        <p class="year">{year}</p>
+        <ul class="pubs">
+          {list.map(p => <li><b>{p.title}</b><br>{p.authors}, <i>{p.journal}</i> {p.volume && p.volume + ","} {p.pages} ({p.year}){p.doi && <> · <a href={`https://doi.org/${p.doi}`}>DOI</a></>}{p.note && <span class="note"> — {p.note}</span>}</li>)}
+        </ul>
+      </>
+    ))}
+  </div>
+</section>
+</Base>

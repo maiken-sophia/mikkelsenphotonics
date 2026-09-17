@@ -1,0 +1,13 @@
+---
+interface Props { slug: string; title: string; question: string; summary: string; image: string; imageAlt: string; }
+const { slug, title, question, summary, image, imageAlt } = Astro.props;
+---
+<article class="card">
+  <img src={image} alt={imageAlt} loading="lazy">
+  <div class="body">
+    <h3>{title}</h3>
+    <p class="q">{question}</p>
+    <p class="t">{summary}</p>
+    <a class="more arrow" href={`/research/${slug}`}>Explore this area</a>
+  </div>
+</article>

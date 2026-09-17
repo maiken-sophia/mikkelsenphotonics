@@ -1,0 +1,22 @@
+---
+import Base from "../../layouts/Base.astro";
+import ResearchCard from "../../components/ResearchCard.astro";
+import { getCollection } from "astro:content";
+const areas = (await getCollection("research")).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="Research">
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Research</p>
+    <h1>Four questions</h1>
+    <p class="muted prose">Nanophotonics has traditionally asked how strongly an optical process can be enhanced. We ask a different question: can an electromagnetic environment beyond anything found in nature create behavior that could not exist otherwise? Our work is organized around four questions.</p>
+    <div class="grid4">
+      {areas.map(a => <ResearchCard slug={a.id} title={a.data.title} question={a.data.question} summary={a.data.summary} image={a.data.image} imageAlt={a.data.imageAlt} />)}
+    </div>
+    <div class="prose beyond">
+      <h2 style="font-size:22px;margin-top:40px">Beyond the four questions</h2>
+      <p class="muted">The same nanogap platform has practical uses we have pursued with collaborators: ultrafast, spectrally selective photodetectors; metasurfaces for sensing and computing, developed in the eight-university Meta-Imaging MURI; and fluorescence-enhancing surfaces for point-of-care biomedical diagnostics, developed at Duke under an NIH R01 program with clinical partners. We are open to collaborations that bring the platform to sensing, imaging, and diagnostics, and welcome contact from Copenhagen's biomedical and health-technology community.</p>
+    </div>
+  </div>
+</section>
+</Base>

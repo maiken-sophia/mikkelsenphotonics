@@ -1,0 +1,51 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+import pubs from "../../data/publications.json";
+
+export async function getStaticPaths() {
+  const areas = await getCollection("research");
+  return areas.map(a => ({ params: { slug: a.id }, props: { area: a } }));
+}
+const { area } = Astro.props;
+const { Content } = await render(area);
+const all = (await getCollection("research")).sort((a, b) => a.data.order - b.data.order);
+const papers = area.data.keyPapers.map(k => pubs.find(p => p.key === k)).filter(Boolean);
+---
+<Base title={area.data.title} description={area.data.question}>
+<section>
+  <div class="wrap two top">
+    <div class="prose">
+      <p class="eyebrow">Research</p>
+      <h1>{area.data.title}</h1>
+      <p class="q">{area.data.question}</p>
+      <Content />
+      {papers.length > 0 && (
+        <>
+          <h2 style="font-size:22px;margin-top:28px">Key papers</h2>
+          <ul class="pubs">
+            {papers.map(p => <li><b>{p.title}</b><br>{p.authors}, <i>{p.journal}</i> {p.volume && p.volume + ","} {p.pages} ({p.year}){p.doi && <> · <a href={`https://doi.org/${p.doi}`}>DOI</a></>}{p.note && <span class="note"> — {p.note}</span>}</li>)}
+          </ul>
+        </>
+      )}
+    </div>
+    <figure>
+      <img class="framed" src={area.data.image} alt={area.data.imageAlt} width="1200" height="900">
+      {area.data.imageCredit && <figcaption>{area.data.imageCredit}</figcaption>}
+    </figure>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The other questions</p>
+    <ul class="others">
+      {all.filter(x => x.id !== area.id).map(x => <li><a href={`/research/${x.id}`}>{x.data.title}</a> <span class="muted">— {x.data.question}</span></li>)}
+    </ul>
+  </div>
+</section>
+</Base>
+<style>
+.q{font-style:italic;font-size:19px;color:var(--ink-2);margin:0 0 18px}
+.others{list-style:none;padding:0;margin:0}
+.others li{padding:8px 0}
+</style>

@@ -1,0 +1,152 @@
+---
+import Base from '../layouts/Base.astro';
+import ResearchCard from '../components/ResearchCard.astro';
+import { getCollection, render } from 'astro:content';
+
+const areas = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
+const discoveries = (await getCollection('discoveries')).sort((a, b) => a.data.order - b.data.order);
+const leader = (await getCollection('people')).find(p => p.data.leader);
+const { Content: LeaderBio } = leader ? await render(leader) : { Content: null };
+const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: (await render(d)).Content })));
+---
+<Base>
+
+<section class="hero">
+  <div class="wrap two">
+    <div>
+      <h1>What happens when light is confined to the scale of atoms?</h1>
+      <p class="lede">We create electromagnetic environments with atomic-scale spatial structure and ultrafast temporal control — and study what they do to light, to quantum emitters, and to matter.</p>
+      <a class="btn btn-accent arrow" href="/research">Explore our research</a><a class="btn btn-ghost" href="/join">We're hiring</a>
+    </div>
+    <figure>
+      <img class="framed" src="/images/hero.jpg" alt="Artist's rendering of a gold nanodisk on a diamond membrane, with a picosecond light pulse arriving from above and a single silicon-vacancy emitter in the nanogap." width="1400" height="1413" fetchpriority="high">
+      <figcaption>A nanogap cavity: a gold nanodisk on a diamond membrane, with a single emitter in the gap. Artist's rendering.</figcaption>
+    </figure>
+  </div>
+</section>
+
+{leader && (
+<section>
+  <div class="wrap leader-grid">
+    <img class="framed" src={leader.data.photo} alt={`Portrait of ${leader.data.name}`} width="700" height="466">
+    <div>
+      <p class="eyebrow">Group leader</p>
+      <h2>Professor {leader.data.name}</h2>
+      <p class="muted">{leader.data.role}, Niels Bohr Institute · University of Copenhagen</p>
+      <div class="prose">{leader.data.shortBio ? leader.data.shortBio.map(t => <p>{t}</p>) : <LeaderBio />}</div>
+      <div class="links">
+        <a href="/people">Biography</a>
+        {leader.data.links.map(l => <a href={l.url}>{l.label}</a>)}
+        <a href="/publications">Publications</a>
+        <a href={`mailto:${leader.data.email}`}>Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+)}
+
+<section>
+  <div class="wrap two">
+    <div class="prose">
+      <p class="eyebrow">The central idea</p>
+      <h2>Light as a tool to control matter at the smallest scales</h2>
+      <p>Most optical materials are described by their intrinsic properties — refractive index, nonlinear susceptibility, emission lifetime, response time. But these are not properties of the material alone. They depend on the electromagnetic environment the material sits in, including the vacuum itself.</p>
+      <p>We build that environment to order. Our cavities confine light to gaps a few nanometers wide, where the field varies on the scale of a single exciton and its gradients exceed anything found in nature. We place single quantum emitters and two-dimensional materials inside them, deterministically, across thousands of sites on a wafer.</p>
+      <p>In these cavities, emitters radiate ten thousand times faster than in free space, nonlinear responses appear that no bulk coefficient predicts, and a slow material can become an ultrafast detector. We are now asking how much further the idea reaches: how the rules of light–matter interaction are rewritten when the field varies across a single emitter, whether a cavity can change the phase of a material, and whether the environment itself can be changed — with femtosecond pulses — faster than the matter inside it can respond.</p>
+    </div>
+    <figure>
+      <img class="framed" src="/images/render_clean.jpg" alt="Rendering of silver nanocubes on a gold film over a layered substrate." width="1100" height="743" loading="lazy">
+      <figcaption>Silver nanocubes on a gold film: each cube forms a nanogap cavity with the film beneath it. Rendering.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <p class="eyebrow">Research</p>
+    <h2>Four questions</h2>
+    <div class="grid4">
+      {areas.map(a => <ResearchCard slug={a.id} title={a.data.title} question={a.data.question} summary={a.data.summary} image={a.data.image} imageAlt={a.data.imageAlt} />)}
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap two">
+    <div class="prose">
+      <p class="eyebrow">From enhancement to new physics</p>
+      <h2>Can an electromagnetic environment create behavior that could not exist otherwise?</h2>
+      <p>Nanophotonics has traditionally asked how strongly an optical process can be enhanced. We ask a different question: can an electromagnetic environment beyond anything found in nature create behavior that could not exist otherwise?</p>
+    </div>
+    <img class="framed" src="/images/sem.jpg" alt="Top-down scanning electron micrograph of silver nanocubes distributed over a gold film." width="900" height="652" loading="lazy">
+  </div>
+</section>
+
+<section>
+  <div class="wrap two top">
+    <div class="prose">
+      <p class="eyebrow">The lab</p>
+      <h2>Built from the ground up</h2>
+      <p>We are building the laboratory from the ground up in the Niels Bohr Institute's new building, with generous support from the Novo Nordisk Foundation. Instruments arriving through 2027:</p>
+      <ul class="muted">
+        <li>Single-photon confocal spectroscopy with time-correlated detection and superconducting nanowire detectors</li>
+        <li>Tunable picosecond and femtosecond sources, including a two-OPA pump–probe system with broadband transient absorption</li>
+        <li>Closed-cycle cryostats with in-plane and vector magnetic fields for magneto-optical spectroscopy down to liquid-helium temperatures</li>
+        <li>Van der Waals heterostructure assembly in inert atmosphere</li>
+      </ul>
+      <p>Nanofabrication is carried out in the NBI nanofabrication facilities and the DTU Nanolab cleanroom. The Niels Bohr Institute hosts world-leading groups in quantum optics, quantum photonics, and condensed-matter physics, and Copenhagen has strong quantum photonics and 2D-materials communities at both NBI and DTU.</p>
+    </div>
+    <div class="photos">
+      <figure><img class="framed" src="/images/building.jpg" alt="The Niels Bohr Building on Jagtvej." width="640" height="960" loading="lazy" style="max-height:340px;object-fit:cover;width:100%"><figcaption>The Niels Bohr Building, Jagtvej 155.</figcaption></figure>
+      <figure><img class="framed" src="/images/lab.jpg" alt="The new, empty laboratory with tape outlines marking where optical tables will stand." width="1200" height="900" loading="lazy"><figcaption>The new laboratory, September 2026. The tape marks where the optical tables will stand.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div><p class="eyebrow">Selected discoveries</p><h2>From fundamental physics to the clinic</h2></div>
+      <a class="arrow" href="/publications">Full publication list</a>
+    </div>
+    <div class="grid5">
+      {rendered.map(d => (
+        <article class="d">
+          {d.data.image ? <img class="framed" src={d.data.image} alt={d.data.imageAlt} loading="lazy" style="aspect-ratio:4/3;object-fit:cover;width:100%"> : <div class="tile">{d.data.tile}</div>}
+          <h3>{d.data.title}</h3>
+          <div class="dtext"><d.Content /></div>
+          <p class="cite" set:html={d.data.citation.replace(/\*(.+?)\*/g, '<i>$1</i>') + ' · ' + (d.data.doi ? `<a class="arrow" href="https://doi.org/${d.data.doi}">Read the paper</a>` : d.data.url ? `<a class="arrow" href="${d.data.url}">Read the paper</a>` : '')} />
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="join">
+  <div class="wrap two top">
+    <div class="prose">
+      <p class="eyebrow">Join us in Copenhagen</p>
+      <h2>Founding members wanted</h2>
+      <p>We are building a new research group and looking for curious experimentalists who want to explore fundamental questions at the boundaries of optics, materials, and quantum science. The people who join now will be founding members of the lab — building the first experiments with us, commissioning instruments as they arrive, and producing its earliest results.</p>
+      <div class="pos"><b>Postdoctoral positions</b><span>Experimental nanophotonics and quantum optics · <a href="https://employment.ku.dk/all-vacancies?show=167960">Posting and application</a></span></div>
+      <div class="pos"><b>Assistant Professor (fixed term)</b><span>Cavity quantum materials and 2D magneto-optics · posting coming soon; informal inquiries welcome now</span></div>
+      <div class="pos"><b>PhD and master's projects</b><span>Write to us</span></div>
+      <p><a class="arrow" href="/join">Salaries, benefits, and how to get in touch</a></p>
+    </div>
+    <figure><img class="framed" src="/images/lab2.jpg" alt="The empty laboratory with tape outlines for optical tables." width="1000" height="750" loading="lazy"><figcaption>This is the lab. Help us fill it.</figcaption></figure>
+  </div>
+</section>
+
+</Base>
+
+<style>
+.hero{background:var(--paper-2)}
+.hero .two{padding:56px 0 52px}
+.lede{font-size:18.5px;color:var(--ink-2);max-width:34em;margin:0 0 26px}
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap}
+.head a{font-size:14.5px;font-weight:500}
+.photos{display:grid;gap:12px}
+.d h3{font-size:17px;margin:12px 0 6px}
+.dtext :global(p){font-size:14.5px;color:var(--ink-2);margin:0 0 8px}
+.join{background:var(--paper-2)}
+</style>
