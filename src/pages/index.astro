@@ -55,8 +55,8 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
       <p>In these cavities, emitters radiate ten thousand times faster than in free space, nonlinear responses appear that no bulk coefficient predicts, and a slow material can become an ultrafast detector. We are now asking how much further the idea reaches: how the rules of light–matter interaction are rewritten when the field varies across a single emitter, whether a cavity can change the phase of a material, and whether the environment itself can be changed — with femtosecond pulses — faster than the matter inside it can respond.</p>
     </div>
     <figure>
-      <img class="framed" src="/images/render_clean.jpg" alt="Rendering of silver nanocubes on a gold film over a layered substrate." width="1100" height="743" loading="lazy">
-      <figcaption>Silver nanocubes on a gold film: each cube forms a nanogap cavity with the film beneath it. Rendering.</figcaption>
+      <img class="framed" src="/images/sem.jpg" alt="Scanning electron micrograph of silver nanocubes on a gold film." width="900" height="652" loading="lazy">
+      <figcaption>Silver nanocubes on a gold film. Each cube forms a cavity with the film beneath it; the gap is a few nanometers wide.</figcaption>
     </figure>
   </div>
 </section>
@@ -71,14 +71,11 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
   </div>
 </section>
 
-<section>
-  <div class="wrap two">
-    <div class="prose">
-      <p class="eyebrow">From enhancement to new physics</p>
-      <h2>Can an electromagnetic environment create behavior that could not exist otherwise?</h2>
-      <p>Nanophotonics has traditionally asked how strongly an optical process can be enhanced. We ask a different question: can an electromagnetic environment beyond anything found in nature create behavior that could not exist otherwise?</p>
-    </div>
-    <img class="framed" src="/images/sem.jpg" alt="Top-down scanning electron micrograph of silver nanocubes distributed over a gold film." width="900" height="652" loading="lazy">
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">From enhancement to new physics</p>
+    <h2>Can an electromagnetic environment create behavior that could not exist otherwise?</h2>
+    <p class="muted">Nanophotonics has traditionally asked how strongly an optical process can be enhanced. We ask a different question: can an electromagnetic environment beyond anything found in nature create behavior that could not exist otherwise?</p>
   </div>
 </section>
 
@@ -97,8 +94,8 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
       <p>Nanofabrication is carried out in the NBI nanofabrication facilities and the DTU Nanolab cleanroom. The Niels Bohr Institute hosts world-leading groups in quantum optics, quantum photonics, and condensed-matter physics, and Copenhagen has strong quantum photonics and 2D-materials communities at both NBI and DTU.</p>
     </div>
     <div class="photos">
-      <figure><img class="framed" src="/images/building.jpg" alt="The Niels Bohr Building on Jagtvej." width="640" height="960" loading="lazy" style="max-height:340px;object-fit:cover;width:100%"><figcaption>The Niels Bohr Building, Jagtvej 155.</figcaption></figure>
-      <figure><img class="framed" src="/images/lab.jpg" alt="The new, empty laboratory with tape outlines marking where optical tables will stand." width="1200" height="900" loading="lazy"><figcaption>The new laboratory, September 2026. The tape marks where the optical tables will stand.</figcaption></figure>
+      <figure><img class="framed" src="/images/building.jpg" alt="The Niels Bohr Building on Jagtvej, its faceted glass facade and skybridge." width="1600" height="1067" loading="lazy"><figcaption>The Niels Bohr Building, Jagtvej 155.</figcaption></figure>
+      <figure><img class="framed" src="/images/skybridge.jpg" alt="Inside the glazed bridge linking the two wings of the Niels Bohr Building." width="1600" height="1066" loading="lazy"><figcaption>The bridge between the two wings.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -133,7 +130,7 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
       <div class="pos"><b>PhD and master's projects</b><span>Write to us</span></div>
       <p><a class="arrow" href="/join">Salaries, benefits, and how to get in touch</a></p>
     </div>
-    <figure><img class="framed" src="/images/lab2.jpg" alt="The empty laboratory with tape outlines for optical tables." width="1000" height="750" loading="lazy"><figcaption>This is the lab. Help us fill it.</figcaption></figure>
+    <figure><img class="framed" src="/images/view-out.jpg" alt="The view from inside the Niels Bohr Building out over Jagtvej." width="1600" height="1066" loading="lazy"><figcaption>The view from the building, over Jagtvej.</figcaption></figure>
   </div>
 </section>
 
@@ -149,5 +146,8 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
 .d h3{font-size:16.5px;margin:10px 0 5px}
 .dtext :global(p){font-size:14px;color:var(--ink-2);margin:0 0 6px;line-height:1.5}
 .join{background:var(--paper-2)}
+.band .wrap{text-align:center}
+.band h2{max-width:22em;margin:0 auto 12px}
+.band p{max-width:46em;margin:0 auto}
 h1{font-size:clamp(30px,3.6vw,40px)}
 </style>

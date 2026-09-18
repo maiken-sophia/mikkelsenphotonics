@@ -2,7 +2,8 @@
 import Base from "../layouts/Base.astro";
 ---
 <Base title="Contact">
-<section>
+<section class="contact">
+  <img class="strip" src="/images/facade-detail.jpg" alt="Detail of the triangulated glass facade of the Niels Bohr Building." width="1600" height="1066">
   <div class="wrap">
     <p class="eyebrow">Contact</p>
     <h1>Mikkelsen Photonics</h1>
@@ -10,3 +11,7 @@ import Base from "../layouts/Base.astro";
   </div>
 </section>
 </Base>
+<style>
+.contact{padding-top:0}
+.contact .strip{width:100%;height:170px;object-fit:cover;object-position:center 40%;margin-bottom:26px}
+</style>
