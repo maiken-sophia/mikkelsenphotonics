@@ -12,14 +12,14 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
 <Base>
 
 <section class="hero">
-  <div class="wrap two">
-    <div>
+  <div class="hero-grid">
+    <div class="hero-text">
       <h1>What happens when light is confined to the scale of atoms?</h1>
       <p class="lede">We create electromagnetic environments with atomic-scale spatial structure and ultrafast temporal control — and study what they do to light, to quantum emitters, and to matter.</p>
       <a class="btn btn-accent arrow" href="/research">Explore our research</a><a class="btn btn-ghost" href="/join">We're hiring</a>
     </div>
-    <figure>
-      <img class="framed" src="/images/hero.jpg" alt="Artist's rendering of a gold nanodisk on a diamond membrane, with a picosecond light pulse arriving from above and a single silicon-vacancy emitter in the nanogap." width="1400" height="1413" fetchpriority="high">
+    <figure class="hero-fig">
+      <img src="/images/hero.jpg" alt="Artist's rendering of a gold nanodisk on a diamond membrane, with a picosecond light pulse arriving from above and a single silicon-vacancy emitter in the nanogap." width="1400" height="1413" fetchpriority="high">
       <figcaption>A nanogap cavity: a gold nanodisk on a diamond membrane, with a single emitter in the gap. Artist's rendering.</figcaption>
     </figure>
   </div>
@@ -137,8 +137,13 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
 </Base>
 
 <style>
-.hero{background:var(--paper-2)}
-.hero .two{padding:34px 0 30px}
+.hero{background:var(--paper-2);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,46vw);align-items:stretch;gap:0}
+.hero-text{padding:46px 44px 46px max(28px,calc((100vw - 1180px)/2 + 28px));align-self:center}
+.hero-fig{margin:0;position:relative;min-height:360px}
+.hero-fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;max-width:none}
+.hero-fig figcaption{position:absolute;left:0;right:0;bottom:0;margin:0;padding:10px 16px;font-size:12px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.hero-text{padding:30px 28px 22px}.hero-fig{min-height:300px}}
 .lede{font-size:18px;color:var(--ink-2);max-width:34em;margin:0 0 20px}
 .head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap}
 .head a{font-size:14.5px;font-weight:500}
