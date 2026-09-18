@@ -141,12 +141,13 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
 
 <style>
 .hero{background:var(--paper-2)}
-.hero .two{padding:56px 0 52px}
-.lede{font-size:18.5px;color:var(--ink-2);max-width:34em;margin:0 0 26px}
+.hero .two{padding:34px 0 30px}
+.lede{font-size:18px;color:var(--ink-2);max-width:34em;margin:0 0 20px}
 .head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap}
 .head a{font-size:14.5px;font-weight:500}
-.photos{display:grid;gap:12px}
-.d h3{font-size:17px;margin:12px 0 6px}
-.dtext :global(p){font-size:14.5px;color:var(--ink-2);margin:0 0 8px}
+.photos{display:grid;gap:10px}
+.d h3{font-size:16.5px;margin:10px 0 5px}
+.dtext :global(p){font-size:14px;color:var(--ink-2);margin:0 0 6px;line-height:1.5}
 .join{background:var(--paper-2)}
+h1{font-size:clamp(30px,3.6vw,40px)}
 </style>

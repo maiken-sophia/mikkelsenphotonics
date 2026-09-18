@@ -11,7 +11,7 @@ const rendered = await Promise.all(people.map(async p => ({ ...p, Content: (awai
     <h1>The group</h1>
     {rendered.map(p => (
       <div class="leader-grid person">
-        {p.data.photo && <img class="framed" src={p.data.photo} alt={`Portrait of ${p.data.name}`} width="700" height="466">}
+        {(p.data.photoPage ?? p.data.photo) && <img class="framed" src={p.data.photoPage ?? p.data.photo} alt={`Portrait of ${p.data.name}`} width="900" height="1125">}
         <div>
           <h2>{p.data.name}</h2>
           <p class="muted">{p.data.role}</p>

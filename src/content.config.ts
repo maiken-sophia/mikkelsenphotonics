@@ -35,7 +35,8 @@ const people = defineCollection({
     name: z.string(),
     role: z.string(),
     order: z.number(),
-    photo: z.string().optional(),
+    photo: z.string().optional(),          // used on the front page
+    photoPage: z.string().optional(),      // used on the People page (falls back to photo)
     email: z.string().optional(),
     links: z.array(z.object({ label: z.string(), url: z.string() })).default([]),
     leader: z.boolean().default(false),

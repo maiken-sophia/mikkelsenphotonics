@@ -1,6 +1,6 @@
 ---
 title: Ultrabright readout for point-of-care diagnostics
-order: 5
+order: 6
 citation: "Cruz et al., *Nano Letters* 20, 4330 (2020)"
 doi: 10.1021/acs.nanolett.0c01051
 image: /images/immunoassay.jpg

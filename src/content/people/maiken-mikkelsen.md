@@ -3,6 +3,7 @@ name: Maiken H. Mikkelsen
 role: Professor of Nanophotonics
 order: 1
 photo: /images/portrait.jpg
+photoPage: /images/portrait-nbi.jpg
 email: maiken.mikkelsen@nbi.ku.dk
 leader: true
 shortBio:
