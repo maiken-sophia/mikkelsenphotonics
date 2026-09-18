@@ -28,7 +28,7 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
 {leader && (
 <section>
   <div class="wrap leader-grid">
-    <img class="framed" src={leader.data.photo} alt={`Portrait of ${leader.data.name}`} width="700" height="466">
+    <img class="framed" src={leader.data.photo} alt={`Portrait of ${leader.data.name}`} width="1050" height="700" loading="lazy">
     <div>
       <p class="eyebrow">Group leader</p>
       <h2>Professor {leader.data.name}</h2>
@@ -84,7 +84,7 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
     <div class="prose">
       <p class="eyebrow">The lab</p>
       <h2>Built from the ground up</h2>
-      <p>We are building the laboratory from the ground up in the Niels Bohr Institute's new building, with generous support from the Novo Nordisk Foundation. Instruments arriving through 2027:</p>
+      <p>We are building the laboratory from the ground up in the Niels Bohr Institute's new building, established with a DKK 35 million RECRUIT award from the Novo Nordisk Foundation. Instruments arriving through 2027:</p>
       <ul class="muted">
         <li>Single-photon confocal spectroscopy with time-correlated detection and superconducting nanowire detectors</li>
         <li>Tunable picosecond and femtosecond sources, including a two-OPA pump–probe system with broadband transient absorption</li>
