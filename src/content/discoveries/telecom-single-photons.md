@@ -2,7 +2,7 @@
 title: Ultrafast single photons at telecom wavelengths
 order: 2
 citation: "Zhang et al., *ACS Nano* 19, 19035 (2025)"
-url: https://scholar.google.com/citations?user=znOGvKIAAAAJ
+doi: 10.1021/acsnano.4c18261
 image: /images/telecom-toc.jpg
 imageAlt: Rendering of silver nanocubes on a gold film with a 1550 nm pulse, labelled 298 K — room-temperature telecom single-photon emission.
 ---
