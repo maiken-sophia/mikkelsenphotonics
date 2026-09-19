@@ -1,0 +1,38 @@
+---
+import Base from "../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+const discoveries = (await getCollection("discoveries")).sort((a, b) => a.data.order - b.data.order);
+const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: (await render(d)).Content })));
+---
+<Base title="Discoveries" description="Selected results from the Mikkelsen group: ultrafast single photons, extreme Purcell enhancement, nonlinear light from centrosymmetric materials, metasurface detectors and point-of-care diagnostics.">
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Selected discoveries</p>
+    <h1>From fundamental physics to the clinic</h1>
+    <p class="muted prose">A few results that show what nanogap cavities can do. The complete record is on the <a href="/publications">publications page</a>.</p>
+    <div class="dlist">
+      {rendered.map(d => (
+        <article class="drow">
+          {d.data.image
+            ? <img class="framed" src={d.data.image} alt={d.data.imageAlt} loading="lazy">
+            : <div class="tile">{d.data.tile}</div>}
+          <div>
+            <h2>{d.data.title}</h2>
+            <div class="prose"><d.Content /></div>
+            <p class="cite" set:html={d.data.citation.replace(/\*(.+?)\*/g, '<i>$1</i>') + ' · ' + (d.data.doi ? `<a class="arrow" href="https://doi.org/${d.data.doi}">Read the paper</a>` : d.data.url ? `<a class="arrow" href="${d.data.url}">Read the paper</a>` : '')} />
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+</Base>
+<style>
+.dlist{display:grid;gap:26px;margin-top:22px}
+.drow{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start;padding-top:22px;border-top:1px solid var(--line)}
+.drow:first-child{border-top:0;padding-top:6px}
+.drow img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.drow h2{font-size:21px;margin:0 0 6px}
+.drow .prose :global(p){margin:0 0 8px;font-size:15.5px}
+@media (max-width:760px){.drow{grid-template-columns:1fr}.drow img{max-width:420px}}
+</style>

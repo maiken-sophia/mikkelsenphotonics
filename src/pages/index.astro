@@ -52,7 +52,8 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
       <h2>Light as a tool to control matter at the smallest scales</h2>
       <p>Most optical materials are described by their intrinsic properties — refractive index, nonlinear susceptibility, emission lifetime, response time. But these are not properties of the material alone. They depend on the electromagnetic environment the material sits in, including the vacuum itself.</p>
       <p>We build that environment to order. Our cavities confine light to gaps a few nanometers wide, where the field varies on the scale of a single exciton and its gradients exceed anything found in nature. We place single quantum emitters and two-dimensional materials inside them, deterministically, across thousands of sites on a wafer.</p>
-      <p>In these cavities, emitters radiate ten thousand times faster than in free space, nonlinear responses appear that no bulk coefficient predicts, and a slow material can become an ultrafast detector. We are now asking how much further the idea reaches: how the rules of light–matter interaction are rewritten when the field varies across a single emitter, whether a cavity can change the phase of a material, and whether the environment itself can be changed — with femtosecond pulses — faster than the matter inside it can respond.</p>
+      <p>In these cavities, emitters radiate ten thousand times faster than in free space, nonlinear responses appear that no bulk coefficient predicts, and a slow material can become an ultrafast detector.</p>
+      <p>We are now asking how much further the idea reaches. How are the rules of light–matter interaction rewritten when the field varies across a single emitter? Can a cavity change the phase of a material? And can the environment itself be changed — with femtosecond pulses — faster than the matter inside it can respond?</p>
     </div>
     <figure>
       <img class="framed" src="/images/sem.jpg" alt="Scanning electron micrograph of silver nanocubes on a gold film." width="900" height="652" loading="lazy">
@@ -71,6 +72,25 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div><p class="eyebrow">Selected discoveries</p><h2>From fundamental physics to the clinic</h2></div>
+      <a class="arrow" href="/discoveries">All discoveries</a>
+    </div>
+    <div class="grid5">
+      {rendered.map(d => (
+        <article class="d">
+          {d.data.image ? <img class="framed" src={d.data.image} alt={d.data.imageAlt} loading="lazy" style="aspect-ratio:4/3;object-fit:cover;width:100%"> : <div class="tile">{d.data.tile}</div>}
+          <h3>{d.data.title}</h3>
+          <div class="dtext"><d.Content /></div>
+          <p class="cite" set:html={d.data.citation.replace(/\*(.+?)\*/g, '<i>$1</i>') + ' · ' + (d.data.doi ? `<a class="arrow" href="https://doi.org/${d.data.doi}">Read the paper</a>` : d.data.url ? `<a class="arrow" href="${d.data.url}">Read the paper</a>` : '')} />
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
 <section class="band">
   <div class="wrap">
     <p class="eyebrow">From enhancement to new physics</p>
@@ -80,7 +100,7 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
 </section>
 
 <section>
-  <div class="wrap two top">
+  <div class="wrap two top lab-two">
     <div class="prose">
       <p class="eyebrow">The lab</p>
       <h2>Built from the ground up</h2>
@@ -100,24 +120,7 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="head">
-      <div><p class="eyebrow">Selected discoveries</p><h2>From fundamental physics to the clinic</h2></div>
-      <a class="arrow" href="/publications">Full publication list</a>
-    </div>
-    <div class="grid5">
-      {rendered.map(d => (
-        <article class="d">
-          {d.data.image ? <img class="framed" src={d.data.image} alt={d.data.imageAlt} loading="lazy" style="aspect-ratio:4/3;object-fit:cover;width:100%"> : <div class="tile">{d.data.tile}</div>}
-          <h3>{d.data.title}</h3>
-          <div class="dtext"><d.Content /></div>
-          <p class="cite" set:html={d.data.citation.replace(/\*(.+?)\*/g, '<i>$1</i>') + ' · ' + (d.data.doi ? `<a class="arrow" href="https://doi.org/${d.data.doi}">Read the paper</a>` : d.data.url ? `<a class="arrow" href="${d.data.url}">Read the paper</a>` : '')} />
-        </article>
-      ))}
-    </div>
-  </div>
-</section>
+
 
 <section class="join">
   <div class="wrap two top">
@@ -147,7 +150,12 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
 .lede{font-size:18px;color:var(--ink-2);max-width:34em;margin:0 0 20px}
 .head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap}
 .head a{font-size:14.5px;font-weight:500}
-.photos{display:grid;gap:10px}
+.photos{display:grid;grid-template-rows:1fr 1fr;gap:10px;height:100%;min-height:0}
+.photos figure{display:flex;flex-direction:column;min-height:0;margin:0}
+.photos img{flex:1 1 auto;min-height:0;width:100%;object-fit:cover}
+.photos figcaption{flex:0 0 auto}
+.lab-two{align-items:stretch}
+@media (max-width:860px){.photos{grid-template-rows:auto auto;height:auto}.photos img{height:220px}}
 .d h3{font-size:16.5px;margin:10px 0 5px}
 .dtext :global(p){font-size:14px;color:var(--ink-2);margin:0 0 6px;line-height:1.5}
 .join{background:var(--paper-2)}
