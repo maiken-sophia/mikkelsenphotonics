@@ -1,9 +1,9 @@
 ---
 import covers from '../data/covers.json';
-interface Props { tone?: 'dark' | 'light'; }
-const { tone = 'dark' } = Astro.props;
+interface Props { tone?: 'dark' | 'light'; compact?: boolean; }
+const { tone = 'dark', compact = false } = Astro.props;
 ---
-<section class={`covers ${tone}`}>
+<section class={`covers ${tone}${compact ? ' compact' : ''}`}>
   <div class="wrap">
     <p class="eyebrow">Journal covers</p>
     <h2>On the cover</h2>
@@ -38,7 +38,16 @@ const { tone = 'dark' } = Astro.props;
 .covers .p{display:block;margin-top:3px;font-size:13.5px;line-height:1.4;opacity:.72}
 .covers a:hover .p{text-decoration:underline;text-decoration-color:currentColor;text-underline-offset:3px}
 .covers .credit{margin:24px 0 0;font-size:12px;opacity:.5;text-align:center}
+.covers.compact{padding:24px 0 20px}
+.covers.compact .eyebrow{display:none}
+.covers.compact h2{font-size:20px;margin-bottom:14px}
+.covers.compact ul{justify-content:flex-start;gap:16px 18px}
+.covers.compact li{flex:0 0 116px}
+.covers.compact .j{font-size:12.5px;margin-top:9px}
+.covers.compact .p{display:none}
+.covers.compact .credit{text-align:left;margin-top:14px}
+.covers.compact.dark img{box-shadow:0 8px 20px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08)}
 @media (max-width:860px){.covers li{flex-basis:calc((100% - 44px)/3)}}
-@media (max-width:520px){.covers li{flex-basis:calc((100% - 22px)/2)}}
+@media (max-width:520px){.covers li{flex-basis:calc((100% - 22px)/2)}.covers.compact li{flex-basis:calc((100% - 36px)/3)}}
 @media (prefers-reduced-motion:reduce){.covers img{transition:none}.covers a:hover img{transform:none}}
 </style>

@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run check && npm run bib && astro build",
+    "build": "npm run check && npm run bib && astro build && node scripts/typography.mjs dist",
     "preview": "astro preview",
     "bib": "node scripts/bibtex-to-json.mjs",
     "check": "node scripts/check-content.mjs"

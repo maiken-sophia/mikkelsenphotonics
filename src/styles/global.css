@@ -27,7 +27,7 @@ p{margin:0 0 11px}
 .btn-accent:hover{filter:brightness(1.1)}
 .btn-ghost{border:1.5px solid currentColor;color:var(--ink)}
 .btn+.btn{margin-left:10px}
-.arrow::after{content:" \2192"}
+.arrow::after{content:"\00a0\2192"}
 section{padding:34px 0;border-bottom:1px solid var(--line)}
 .two{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center}
 .two.top{align-items:start}
@@ -64,3 +64,7 @@ figcaption{font-size:13px;color:var(--ink-3);margin-top:8px}
 @media (max-width:900px){.grid5{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.grid5{grid-template-columns:1fr}}
 .pubs .note{color:var(--ink-3);font-size:14px}
+/* line breaking: balanced headings, no stranded last words, links and buttons kept whole */
+h1,h2,h3{text-wrap:balance}
+.prose p,.lede{text-wrap:pretty}
+.btn,.links a{white-space:nowrap}
