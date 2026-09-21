@@ -16,7 +16,7 @@ for (const p of [...pubs].sort((a, b) => b.year - a.year)) {
     <p class="muted prose">Publications of the group, including reviews and book chapters. The complete list is on <a href="https://scholar.google.com/citations?user=znOGvKIAAAAJ">Google&nbsp;Scholar</a> and <a href="https://orcid.org/0000-0002-0487-7585">ORCID</a>.</p>
   </div>
 </section>
-<Covers compact />
+<Covers compact tone="light" />
 <section>
   <div class="wrap pubs-list">
     {[...byYear.entries()].map(([year, list]) => (
