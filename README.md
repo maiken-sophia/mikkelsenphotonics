@@ -34,7 +34,11 @@ Every routine change is a text edit in `src/content/` — you can do it in GitHu
 - **Change research text:** edit the Markdown body of the file in `src/content/research/`. The `summary:` field is the two-sentence blurb on the front page; the body is the subpage.
 - **Swap an image:** replace the file in `public/images/` (keep the name) or change the `image:` path in the content file.
 
-`publications.bib` contains the group's 55 publications (from the September 2026 CV). Fourteen have DOIs; adding the remaining DOIs makes the "DOI" links appear — the quickest way is to paste each title into https://search.crossref.org and copy the DOI into the entry.
+`publications.bib` contains the group's 55 publications; all but one book chapter have DOIs (merged from ORCID in September 2026). When adding a paper, include a `doi = {...}` field so the "DOI" link appears.
+
+- **Add a journal cover:** put the image in `public/images/covers/` (3:4, about 840 px wide) and add an entry to `src/data/covers.json`. The "On the cover" band on the front page and Publications page updates itself.
+- **Add a new page:** also add its address to `public/sitemap.xml` (a plain list of the site's pages for search engines).
+- **Share image:** `public/images/share.jpg` (1200 × 630) is what LinkedIn, Slack etc. show when the site is linked.
 
 ## Running locally (for design changes)
 

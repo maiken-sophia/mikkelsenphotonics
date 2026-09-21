@@ -18,7 +18,14 @@ const desc = description ?? 'Quantum, nonlinear and nanoscale light–matter int
   <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)}>
   <meta property="og:title" content={fullTitle}>
   <meta property="og:description" content={desc}>
-  <meta property="og:image" content={new URL('/images/hero.jpg', Astro.site)}>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content={site}>
+  <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)}>
+  <meta property="og:image" content={new URL('/images/share.jpg', Astro.site)}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mikkelsen Photonics — Niels Bohr Institute, University of Copenhagen">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

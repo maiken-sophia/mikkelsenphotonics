@@ -1,0 +1,7 @@
+[
+  { "image": "/images/covers/adom-2026.jpg", "journal": "Advanced Optical Materials", "year": 2026, "paper": "Thin-film interference in diamond membranes", "doi": "10.1002/adom.202501609", "alt": "Cover of Advanced Optical Materials, March 2026: coloured beams striking a diamond lattice with silicon vacancy centres." },
+  { "image": "/images/covers/acsnano-2025.jpg", "journal": "ACS Nano", "year": 2025, "paper": "Picosecond single photons from diamond", "doi": "10.1021/acsnano.5c02273", "alt": "Cover of ACS Nano, May 2025: a metal nanodisk on a diamond membrane emitting a light pulse." },
+  { "image": "/images/covers/advmat-2017.jpg", "journal": "Advanced Materials", "year": 2017, "paper": "Metasurface pixels for multispectral imaging", "doi": "10.1002/adma.201602971", "alt": "Cover of Advanced Materials, February 2017: red, green and blue pixels made of nanocubes." },
+  { "image": "/images/covers/advmat-2015.jpg", "journal": "Advanced Materials", "year": 2015, "paper": "Large-area metasurface perfect absorbers", "doi": "10.1002/adma.201503281", "alt": "Cover of Advanced Materials, December 2015: nanocubes scattered over a surface under coloured light." },
+  { "image": "/images/covers/science-2008.jpg", "journal": "Science", "year": 2008, "paper": "Picosecond control of a single electron spin", "doi": "10.1126/science.1154798", "alt": "Cover of Science, 18 April 2008: a hand with puppet strings steering a single spin among rows of spins." }
+]

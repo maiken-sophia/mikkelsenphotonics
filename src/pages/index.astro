@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import ResearchCard from '../components/ResearchCard.astro';
+import Covers from '../components/Covers.astro';
 import { getCollection, render } from 'astro:content';
 
 const areas = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
@@ -19,7 +20,10 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
       <a class="btn btn-accent arrow" href="/research">Explore our research</a><a class="btn btn-ghost" href="/join">We're hiring</a>
     </div>
     <figure class="hero-fig">
-      <img src="/images/hero.jpg" alt="Artist's rendering of a gold nanodisk on a diamond membrane, with a picosecond light pulse arriving from above and a single silicon-vacancy emitter in the nanogap." width="1400" height="1413" fetchpriority="high">
+      <picture>
+        <source type="image/webp" srcset="/images/hero-1000.webp 1000w, /images/hero-1400.webp 1400w, /images/hero-2000.webp 2000w" sizes="(max-width: 860px) 100vw, 46vw">
+        <img src="/images/hero.jpg" alt="Artist's rendering of a gold nanodisk on a diamond membrane, with a picosecond light pulse arriving from above and a single silicon-vacancy emitter in the nanogap." width="1400" height="1413" fetchpriority="high">
+      </picture>
       <figcaption>A nanogap cavity: a gold nanodisk on a diamond membrane, with a single emitter in the gap. Artist's rendering.</figcaption>
     </figure>
   </div>
@@ -27,7 +31,7 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
 
 {leader && (
 <section>
-  <div class="wrap leader-grid">
+  <div class="wrap leader-grid leader-home">
     <img class="framed" src={leader.data.photo} alt={`Portrait of ${leader.data.name}`} width="1050" height="700" loading="lazy">
     <div>
       <p class="eyebrow">Group leader</p>
@@ -90,6 +94,8 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
     </div>
   </div>
 </section>
+
+<Covers />
 
 <section class="band">
   <div class="wrap">
@@ -163,4 +169,5 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
 .band h2{max-width:22em;margin:0 auto 12px}
 .band p{max-width:46em;margin:0 auto}
 h1{font-size:clamp(30px,3.6vw,40px)}
+@media (min-width:1041px){.leader-home{grid-template-columns:420px 1fr;align-items:center}}
 </style>

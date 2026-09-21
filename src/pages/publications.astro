@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import pubs from "../data/publications.json";
+import Covers from "../components/Covers.astro";
 const byYear = new Map<number, typeof pubs>();
 for (const p of [...pubs].sort((a, b) => b.year - a.year)) {
   if (!byYear.has(p.year)) byYear.set(p.year, []);
@@ -13,6 +14,11 @@ for (const p of [...pubs].sort((a, b) => b.year - a.year)) {
     <p class="eyebrow">Publications</p>
     <h1>Publications</h1>
     <p class="muted prose">Publications of the group, including reviews and book chapters. The complete list is on <a href="https://scholar.google.com/citations?user=znOGvKIAAAAJ">Google Scholar</a> and <a href="https://orcid.org/0000-0002-0487-7585">ORCID</a>.</p>
+  </div>
+</section>
+<Covers />
+<section>
+  <div class="wrap">
     {[...byYear.entries()].map(([year, list]) => (
       <>
         <p class="year">{year}</p>

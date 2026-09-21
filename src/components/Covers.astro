@@ -1,0 +1,44 @@
+---
+import covers from '../data/covers.json';
+interface Props { tone?: 'dark' | 'light'; }
+const { tone = 'dark' } = Astro.props;
+---
+<section class={`covers ${tone}`}>
+  <div class="wrap">
+    <p class="eyebrow">Journal covers</p>
+    <h2>On the cover</h2>
+    <ul>
+      {covers.map(c => (
+        <li>
+          <a href={`https://doi.org/${c.doi}`}>
+            <img src={c.image} alt={c.alt} width="840" height="1120" loading="lazy">
+            <span class="j">{c.journal}</span>
+            <span class="p">{c.paper}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="credit">Covers © Wiley-VCH, American Chemical Society and AAAS.</p>
+  </div>
+</section>
+
+<style>
+.covers{padding:44px 0 36px}
+.covers.dark{background:#0D0D10;color:#EDEDEA;border-bottom-color:#0D0D10}
+.covers.dark .eyebrow{color:#D0606E}
+.covers h2{margin-bottom:24px}
+.covers ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:26px 22px}
+.covers li{flex:0 1 calc((100% - 88px)/5);min-width:0}
+.covers a{display:block;text-decoration:none}
+.covers img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px;transition:transform .25s ease,box-shadow .25s ease}
+.covers.dark img{box-shadow:0 14px 34px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.08)}
+.covers.light img{box-shadow:0 8px 22px rgba(0,0,0,.16),0 0 0 1px var(--line)}
+.covers a:hover img,.covers a:focus-visible img{transform:translateY(-5px)}
+.covers .j{display:block;margin-top:13px;font-size:14.5px;font-weight:600;line-height:1.3}
+.covers .p{display:block;margin-top:3px;font-size:13.5px;line-height:1.4;opacity:.72}
+.covers a:hover .p{text-decoration:underline;text-decoration-color:currentColor;text-underline-offset:3px}
+.covers .credit{margin:24px 0 0;font-size:12px;opacity:.5;text-align:center}
+@media (max-width:860px){.covers li{flex-basis:calc((100% - 44px)/3)}}
+@media (max-width:520px){.covers li{flex-basis:calc((100% - 22px)/2)}}
+@media (prefers-reduced-motion:reduce){.covers img{transition:none}.covers a:hover img{transform:none}}
+</style>
