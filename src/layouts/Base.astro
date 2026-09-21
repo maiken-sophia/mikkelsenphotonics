@@ -2,11 +2,11 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-interface Props { title?: string; description?: string; }
-const { title, description } = Astro.props;
+interface Props { title?: string; description?: string; jsonld?: object; noindex?: boolean; }
+const { title, description, jsonld, noindex = false } = Astro.props;
 const site = 'Mikkelsen Photonics';
 const fullTitle = title ? `${title} — ${site}` : `${site} — Niels Bohr Institute, University of Copenhagen`;
-const desc = description ?? 'Quantum, nonlinear and nanoscale light–matter interactions. The Mikkelsen group at the Niels Bohr Institute, University of Copenhagen.';
+const desc = description ?? 'The research group of Maiken H. Mikkelsen at the Niels Bohr Institute, University of Copenhagen: quantum, nonlinear and nanoscale light–matter interactions.';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +16,7 @@ const desc = description ?? 'Quantum, nonlinear and nanoscale light–matter int
   <title>{fullTitle}</title>
   <meta name="description" content={desc}>
   <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)}>
+  {noindex && <meta name="robots" content="noindex">}
   <meta property="og:title" content={fullTitle}>
   <meta property="og:description" content={desc}>
   <meta property="og:type" content="website">
@@ -27,6 +28,7 @@ const desc = description ?? 'Quantum, nonlinear and nanoscale light–matter int
   <meta property="og:image:alt" content="Mikkelsen Photonics — Niels Bohr Institute, University of Copenhagen">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  {jsonld && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonld)} />}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">

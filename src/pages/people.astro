@@ -1,10 +1,12 @@
 ---
 import Base from "../layouts/Base.astro";
 import { getCollection, render } from "astro:content";
+import schema from "../data/schema.json";
 const people = (await getCollection("people")).sort((a, b) => a.data.order - b.data.order);
 const rendered = await Promise.all(people.map(async p => ({ ...p, Content: (await render(p)).Content })));
+const jsonld = { '@context': 'https://schema.org', ...schema.person };
 ---
-<Base title="People">
+<Base title="Maiken H. Mikkelsen and group" description="Maiken H. Mikkelsen is Professor of Nanophotonics at the Niels Bohr Institute, University of Copenhagen, and leads the Mikkelsen Photonics group. Biography, CV and group members." jsonld={jsonld}>
 <section>
   <div class="wrap">
     <p class="eyebrow">People</p>

@@ -1,0 +1,62 @@
+{
+  "person": {
+    "@type": "Person",
+    "@id": "https://mikkelsenphotonics.com/#maiken-mikkelsen",
+    "name": "Maiken H. Mikkelsen",
+    "alternateName": ["Maiken Høgh Mikkelsen", "Maiken Mikkelsen"],
+    "jobTitle": "Professor of Nanophotonics",
+    "url": "https://mikkelsenphotonics.com/people",
+    "image": "https://mikkelsenphotonics.com/images/portrait.jpg",
+    "email": "mailto:maiken.mikkelsen@nbi.ku.dk",
+    "worksFor": {
+      "@type": "CollegeOrUniversity",
+      "name": "Niels Bohr Institute, University of Copenhagen",
+      "url": "https://nbi.ku.dk"
+    },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "University of California, Santa Barbara" },
+      { "@type": "CollegeOrUniversity", "name": "University of Copenhagen" }
+    ],
+    "award": [
+      "Fellow of Optica",
+      "Maria Goeppert Mayer Award, American Physical Society",
+      "Moore Inventor Fellowship",
+      "SPIE Early Career Achievement Award"
+    ],
+    "knowsAbout": ["Nanophotonics", "Quantum optics", "Plasmonics", "Metasurfaces", "Nonlinear optics", "Single-photon sources"],
+    "sameAs": [
+      "https://orcid.org/0000-0002-0487-7585",
+      "https://scholar.google.com/citations?user=znOGvKIAAAAJ"
+    ]
+  },
+  "organization": {
+    "@type": "ResearchOrganization",
+    "@id": "https://mikkelsenphotonics.com/#group",
+    "name": "Mikkelsen Photonics",
+    "alternateName": ["Mikkelsen group", "Mikkelsen Lab"],
+    "description": "Research group of Maiken H. Mikkelsen at the Niels Bohr Institute, University of Copenhagen: quantum, nonlinear and nanoscale light–matter interactions.",
+    "url": "https://mikkelsenphotonics.com/",
+    "image": "https://mikkelsenphotonics.com/images/share.jpg",
+    "email": "mailto:maiken.mikkelsen@nbi.ku.dk",
+    "founder": { "@id": "https://mikkelsenphotonics.com/#maiken-mikkelsen" },
+    "parentOrganization": {
+      "@type": "CollegeOrUniversity",
+      "name": "Niels Bohr Institute, University of Copenhagen",
+      "url": "https://nbi.ku.dk"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jagtvej 155",
+      "postalCode": "2200",
+      "addressLocality": "Copenhagen N",
+      "addressCountry": "DK"
+    }
+  },
+  "website": {
+    "@type": "WebSite",
+    "@id": "https://mikkelsenphotonics.com/#website",
+    "name": "Mikkelsen Photonics",
+    "url": "https://mikkelsenphotonics.com/",
+    "publisher": { "@id": "https://mikkelsenphotonics.com/#group" }
+  }
+}

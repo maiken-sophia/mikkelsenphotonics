@@ -1,6 +1,6 @@
 ---
 title: Atomic-scale nanophotonics
-question: How small can an optical cavity become — and what changes when it does?
+question: How are the rules of light–matter interaction rewritten when the field varies across a single emitter?
 order: 1
 image: /images/sem_angled.jpg
 imageAlt: Scanning electron micrograph of silver nanocubes standing on a gold film.

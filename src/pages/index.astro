@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import ResearchCard from '../components/ResearchCard.astro';
 import Covers from '../components/Covers.astro';
+import schema from '../data/schema.json';
 import { getCollection, render } from 'astro:content';
 
 const areas = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
@@ -9,8 +10,9 @@ const discoveries = (await getCollection('discoveries')).sort((a, b) => a.data.o
 const leader = (await getCollection('people')).find(p => p.data.leader);
 const { Content: LeaderBio } = leader ? await render(leader) : { Content: null };
 const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: (await render(d)).Content })));
+const jsonld = { '@context': 'https://schema.org', '@graph': [schema.website, schema.organization, schema.person] };
 ---
-<Base>
+<Base jsonld={jsonld}>
 
 <section class="hero">
   <div class="hero-grid">
@@ -52,12 +54,11 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
 <section>
   <div class="wrap two">
     <div class="prose">
-      <p class="eyebrow">The central idea</p>
+      <p class="eyebrow">From enhancement to new physics</p>
       <h2>Light as a tool to control matter at the smallest scales</h2>
       <p>Most optical materials are described by their intrinsic properties — refractive index, nonlinear susceptibility, emission lifetime, response time. But these are not properties of the material alone. They depend on the electromagnetic environment the material sits in, including the vacuum itself.</p>
-      <p>We build that environment to order. Our cavities confine light to gaps a few nanometers wide, where the field varies on the scale of a single exciton and its gradients exceed anything found in nature. We place single quantum emitters and two-dimensional materials inside them, deterministically, across thousands of sites on a wafer.</p>
-      <p>In these cavities, emitters radiate ten thousand times faster than in free space, nonlinear responses appear that no bulk coefficient predicts, and a slow material can become an ultrafast detector.</p>
-      <p>We are now asking how much further the idea reaches. How are the rules of light–matter interaction rewritten when the field varies across a single emitter? Can a cavity change the phase of a material? And can the environment itself be changed — with femtosecond pulses — faster than the matter inside it can respond?</p>
+      <p>We build that environment to order. Our cavities confine light to gaps a few nanometers wide, where the field varies on the scale of a single exciton. Inside them, emitters radiate ten thousand times faster than in free space, nonlinear responses appear that no bulk coefficient predicts, and a slow material becomes an ultrafast detector.</p>
+      <p>Nanophotonics has traditionally asked how strongly an optical process can be enhanced. We ask a different question: can an electromagnetic environment beyond anything found in nature create behavior that could not exist otherwise?</p>
     </div>
     <figure>
       <img class="framed" src="/images/sem.jpg" alt="Scanning electron micrograph of silver nanocubes on a gold film." width="900" height="652" loading="lazy">
@@ -96,14 +97,6 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
 </section>
 
 <Covers />
-
-<section class="band">
-  <div class="wrap">
-    <p class="eyebrow">From enhancement to new physics</p>
-    <h2>Can an electromagnetic environment create behavior that could not exist otherwise?</h2>
-    <p class="muted">Nanophotonics has traditionally asked how strongly an optical process can be enhanced. We ask a different question: can an electromagnetic environment beyond anything found in nature create behavior that could not exist otherwise?</p>
-  </div>
-</section>
 
 <section>
   <div class="wrap two top lab-two">
@@ -161,13 +154,11 @@ const rendered = await Promise.all(discoveries.map(async d => ({ ...d, Content: 
 .photos img{flex:1 1 auto;min-height:0;width:100%;object-fit:cover}
 .photos figcaption{flex:0 0 auto}
 .lab-two{align-items:stretch}
+@media (min-width:861px){.lab-two .photos{contain:size;grid-template-rows:1.25fr .75fr}.lab-two .photos figure:first-child img{object-position:center bottom}.lab-two .photos figure:last-child img{object-position:center 40%}}
 @media (max-width:860px){.photos{grid-template-rows:auto auto;height:auto}.photos img{height:220px}}
 .d h3{font-size:16.5px;margin:10px 0 5px}
 .dtext :global(p){font-size:14px;color:var(--ink-2);margin:0 0 6px;line-height:1.5}
 .join{background:var(--paper-2)}
-.band .wrap{text-align:center}
-.band h2{max-width:22em;margin:0 auto 12px}
-.band p{max-width:46em;margin:0 auto}
 h1{font-size:clamp(30px,3.6vw,40px)}
 @media (min-width:1041px){.leader-home{grid-template-columns:420px 1fr;align-items:center}}
 </style>
