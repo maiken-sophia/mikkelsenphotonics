@@ -1,11 +1,11 @@
 ---
-title: Quantum and two-dimensional materials in nanogaps
+title: Quantum and 2D materials in nanogaps
 question: Can a nanogap drive a material into states it cannot reach on its own?
 order: 4
 image: /images/mos2.jpg
 imageAlt: Illustration of silver nanocubes on a monolayer of MoS2 over a gold film, forming nanogap cavities around the two-dimensional material.
 imageCredit: "Huang et al., ACS Photonics 5, 552 (2018)"
-summary: "Materials are usually chosen for their intrinsic properties. We explore the reverse: an electromagnetic environment that gives a material behavior it does not have on its own. A nanogap concentrates light a hundredfold in a single 50 nm patch. A two-dimensional magnet or semiconductor under a cube can therefore be dressed by a field strong enough to reshape its energy levels, while the incident beam stays weak enough not to heat the sample."
+summary: "A nanogap concentrates light a hundredfold in a single 50 nm patch. A two-dimensional magnet or semiconductor under a cube can therefore be dressed by a field strong enough to reshape its energy levels, while the incident beam stays weak enough not to heat the sample."
 keyPapers: [huang2018, akselrod2015nl, stewart2020, bangle2023]
 ---
 Materials are usually chosen for their intrinsic properties. We explore the reverse: an environment that activates behavior the material cannot show on its own. Nanogap cavities have already turned slow materials into ultrafast photodetectors and produced nonlinear responses absent from the bulk.
