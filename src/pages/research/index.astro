@@ -4,7 +4,7 @@ import ResearchCard from "../../components/ResearchCard.astro";
 import { getCollection } from "astro:content";
 const areas = (await getCollection("research")).sort((a, b) => a.data.order - b.data.order);
 ---
-<Base title="Research in nanophotonics and quantum optics" description="Research at Mikkelsen Photonics, Niels Bohr Institute: atomic-scale nanophotonics, quantum light–matter interactions, nonlinear and ultrafast photonics, and cavity quantum materials.">
+<Base title="Research in nanophotonics and quantum optics" description="Research at Mikkelsen Photonics, Niels Bohr Institute: atomic-scale nanophotonics, quantum light–matter interactions, nonlinear and ultrafast photonics, and quantum and two-dimensional materials in nanogaps.">
 <section>
   <div class="wrap">
     <p class="eyebrow">Research</p>

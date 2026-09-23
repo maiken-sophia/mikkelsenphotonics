@@ -12,7 +12,7 @@ const { Content } = await render(area);
 const all = (await getCollection("research")).sort((a, b) => a.data.order - b.data.order);
 const papers = area.data.keyPapers.map(k => pubs.find(p => p.key === k)).filter(Boolean);
 ---
-<Base title={area.data.title} description={`${area.data.question} ${area.data.summary}`}>
+<Base title={area.data.title} description={`${area.data.question} ${area.data.summary.split(". ")[0]}.`}>
 <section>
   <div class="wrap two top">
     <div class="prose">
